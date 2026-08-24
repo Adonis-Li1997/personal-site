@@ -1,3 +1,5 @@
+const base = import.meta.env.BASE_URL
+
 const socialLinks = [
   {
     name: 'Email',
@@ -103,7 +105,7 @@ export default function Contact() {
             </svg>
           </a>
           <a
-            href="/resume.pdf"
+            href={`${base}resume.pdf`}
             download
             className="inline-flex items-center gap-3 px-10 py-5 border border-ink-900/20 text-ink-900 rounded-full font-medium text-lg hover:border-ink-900/40 hover:bg-ink-900/5 transition-all duration-300 group"
           >

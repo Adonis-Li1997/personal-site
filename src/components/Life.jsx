@@ -1,13 +1,15 @@
+const base = import.meta.env.BASE_URL
+
 // 生活碎片板块 - 照片墙 + 短视频展示
 const photos = [
-  { id: 1, src: '/life/life-01.jpg', title: '牛木线徒步' },
-  { id: 2, src: '/life/life-02.jpg', title: '玉龙雪山' },
-  { id: 3, src: '/life/life-03.jpg', title: '三观顶' },
-  { id: 4, src: '/life/life-04.jpg', title: '望郎归' },
-  { id: 5, src: '/life/life-05.jpg', title: '阿里云栖大会' },
-  { id: 6, src: '/life/life-06.jpg', title: '教育装备展' },
-  { id: 7, src: '/life/life-07.jpg', title: '爱好篮球' },
-  { id: 8, src: '/life/life-08.jpg', title: '发现美好' },
+  { id: 1, src: `${base}life/life-01.jpg`, title: '牛木线徒步' },
+  { id: 2, src: `${base}life/life-02.jpg`, title: '玉龙雪山' },
+  { id: 3, src: `${base}life/life-03.jpg`, title: '三观顶' },
+  { id: 4, src: `${base}life/life-04.jpg`, title: '望郎归' },
+  { id: 5, src: `${base}life/life-05.jpg`, title: '阿里云栖大会' },
+  { id: 6, src: `${base}life/life-06.jpg`, title: '教育装备展' },
+  { id: 7, src: `${base}life/life-07.jpg`, title: '爱好篮球' },
+  { id: 8, src: `${base}life/life-08.jpg`, title: '发现美好' },
 ]
 
 export default function Life() {

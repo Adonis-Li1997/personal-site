@@ -1,5 +1,7 @@
 import { useState } from 'react'
 
+const base = import.meta.env.BASE_URL
+
 // 个人创作板块 - 私下做的内容展示
 const creations = [
   {
@@ -10,8 +12,8 @@ const creations = [
     status: '已完成 Demo',
     detail: {
       category: 'AI × 音乐',
-      video: '/claudio-demo.mp4',
-      poster: '/claudio-demo-poster.jpg',
+      video: `${base}claudio-demo.mp4`,
+      poster: `${base}claudio-demo-poster.jpg`,
       summary:
         'Claudio 是一个个人 AI 电台项目。我希望它不只是一个播放器，而是一个能理解心情、时间、天气和个人音乐偏好的 AI DJ，用自然语言陪你聊天、点歌、串场和播报。',
       highlights: [
