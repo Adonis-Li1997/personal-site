@@ -1,0 +1,142 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-white text-ink-900 font-body antialiased;
+    margin: 0;
+  }
+  #root {
+    width: 100%;
+    min-height: 100svh;
+  }
+}
+
+@layer components {
+  .glass {
+    background: rgba(0, 0, 0, 0.02);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+  }
+
+  .glass-strong {
+    background: rgba(0, 0, 0, 0.04);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .text-gradient {
+    background: linear-gradient(180deg, #171717 0%, #525252 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .section-padding {
+    @apply pt-[30px] pb-24 md:pt-10 md:pb-32;
+    scroll-margin-top: 70px;
+  }
+
+  .heading-display {
+    @apply font-display font-bold tracking-tight;
+  }
+
+  /* 1920px+ 大屏适配 */
+  @media (min-width: 1536px) {
+    .section-padding {
+      padding-top: 48px;
+      padding-bottom: 128px;
+    }
+
+    .heading-display {
+      font-size: 1.1em;
+    }
+  }
+}
+
+/* 3D Carousel */
+.carousel-container {
+  perspective: 1400px;
+  perspective-origin: 50% 50%;
+}
+
+.carousel-track {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.carousel-card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transition: opacity 0.6s ease, filter 0.6s ease;
+  will-change: transform, opacity;
+}
+
+.carousel-card.is-front {
+  cursor: pointer;
+}
+
+.carousel-card.is-side {
+  cursor: pointer;
+  filter: brightness(0.85);
+}
+
+.carousel-card.is-back {
+  pointer-events: none;
+  filter: brightness(0.6);
+}
+
+/* Modal animations */
+.modal-overlay {
+  animation: fadeIn 0.25s ease-out forwards;
+}
+
+.modal-content {
+  animation: modalIn 0.35s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes modalIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #fafafa;
+}
+::-webkit-scrollbar-thumb {
+  background: #d4d4d4;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #a3a3a3;
+}
