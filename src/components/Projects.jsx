@@ -2,6 +2,7 @@ import { useState, useEffect, useRef, useCallback } from 'react'
 import AgentArchitecture from './AgentArchitecture'
 import ChineseTutorArchitecture from './ChineseTutorArchitecture'
 import QuestionBankArchitecture from './QuestionBankArchitecture'
+import LearningPlanArchitecture from './LearningPlanArchitecture'
 
 const projects = [
   {
@@ -573,7 +574,7 @@ export default function Projects() {
             </div>
 
             {/* 项目实现逻辑图 */}
-            {(modalProject.id === 1 || modalProject.id === 3 || modalProject.id === 4) && (
+            {(modalProject.id === 1 || modalProject.id === 2 || modalProject.id === 3 || modalProject.id === 4) && (
               <div>
                 <div className="flex items-center gap-2 mb-4">
                   <span className="w-1 h-5 bg-ink-900 rounded-full" />
@@ -583,6 +584,8 @@ export default function Projects() {
                   <div className="rounded-2xl border border-ink-900/5 bg-white p-4 md:p-6">
                     {modalProject.id === 1
                       ? <QuestionBankArchitecture />
+                      : modalProject.id === 2
+                      ? <LearningPlanArchitecture />
                       : modalProject.id === 3
                       ? <AgentArchitecture />
                       : <ChineseTutorArchitecture />}
