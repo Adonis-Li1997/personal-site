@@ -36,7 +36,7 @@ export default function Hero() {
 
           {/* Description */}
           <p className="text-lg md:text-xl 2xl:text-2xl text-ink-500 mb-12 2xl:mb-16 leading-relaxed">
-            7年产品经验，专注 AI 智能体落地。从云端 SaaS 到端侧硬件，
+            8年产品经验，专注 AI 智能体落地。从云端 SaaS 到端侧硬件，
             <br className="hidden md:block" />
             让 AI 能力在真实产品中创造价值。
           </p>

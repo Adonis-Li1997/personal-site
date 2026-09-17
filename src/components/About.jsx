@@ -30,7 +30,7 @@ export default function About() {
             </h2>
             <div className="text-lg text-ink-600 leading-relaxed space-y-4">
               <p>
-                我是李建国，一名专注于 AI 落地的产品经理。过去7年，我从UI设计做起，逐步转型产品，
+                我是李建国，一名专注于 AI 落地的产品经理。过去8年，我从UI设计做起，逐步转型产品，
                 经历了智慧校园SaaS、教育硬件、AI智能体等多个方向的产品从0到1。
               </p>
               <p>
@@ -81,7 +81,7 @@ export default function About() {
                   </div>
                   <div className="flex justify-between items-center border-b border-ink-900/5 pb-4">
                     <span className="text-ink-500 text-sm">工作年限</span>
-                    <span className="text-ink-900">7年</span>
+                    <span className="text-ink-900">8年</span>
                   </div>
                   <div className="flex justify-between items-center border-b border-ink-900/5 pb-4">
                     <span className="text-ink-500 text-sm">求职岗位</span>

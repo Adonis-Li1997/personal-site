@@ -9,7 +9,7 @@ const projects = [
     id: 1,
     category: 'AI × 教育',
     title: 'AI题库建设：习题加工入库与智能标注',
-    period: '2025.12 - 至今',
+    period: '2025.12 - 2026.07',
     role: 'AI产品经理',
     summary: '面向教育题库建设场景，利用大模型构建AI习题加工入库与智能标注流程，提升题库生产效率与内容质量。',
     overview:
@@ -52,7 +52,7 @@ const projects = [
     id: 3,
     category: 'AI × 硬件',
     title: 'AI对话智能体-消费硬件',
-    period: '2025.07 - 2026.04',
+    period: '2025.07 - 至今',
     role: 'AI产品经理',
     summary: '基于ASR、TTS、LLM构建AI对话智能体框架，支持快速搭建对话类硬件产品。',
     overview:

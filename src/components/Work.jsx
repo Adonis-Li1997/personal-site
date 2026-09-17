@@ -54,7 +54,7 @@ export default function Work() {
               <span className="text-ink-500"> 经历</span>
             </h2>
             <p className="text-ink-500 whitespace-nowrap">
-              从 UI 设计到 B 端产品经理，再到 AI 产品经理，7 年行业深耕。
+              从 UI 设计到 B 端产品经理，再到 AI 产品经理，8 年行业深耕。
             </p>
           </div>
         </div>
