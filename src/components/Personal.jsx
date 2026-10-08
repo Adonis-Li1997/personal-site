@@ -6,6 +6,45 @@ const base = import.meta.env.BASE_URL
 const creations = [
   {
     id: 1,
+    type: 'AI 工作流',
+    title: 'Product Prototype Skill',
+    desc: '封装的 Claude Code Skill，从需求文档到高保真原型一站式生成，附带变更影响分析。',
+    status: '已投入使用',
+    detail: {
+      category: 'AI × 产品设计',
+      video: `${base}Product Prototype Skill.mp4`,
+      poster: `${base}tongxunlu-demo-poster.jpg`,
+      summary:
+        '我自己封装的一个 Claude Code Skill，目标是让 AI 真正能独立完成从需求到原型的全流程产品设计工作。从需求文档出发，分六阶段产出需求对齐、功能框架、业务流程、设计规范、交互式 HTML 原型和 PRD 网页版，所有交付物同源生成，原型与文档天然一致。最有价值的是变更管理——改一个需求自动分析影响范围，按风险分级，避免改东漏西。',
+      highlights: [
+        '六阶段工作流：需求对齐 → 功能框架 → 业务流程 → UI 风格 → 原型生成 → PRD 输出，每阶段可独立评审',
+        '交付物同源：页面 ID 作为全局主键，原型与 PRD 从同一份机读 JSON 生成，不会出现”文档有原型没有”的情况',
+        '单文件原型：一个 HTML 文件包含所有页面、路由、交互、明暗模式，发给别人直接能打开',
+        '变更影响分析：修改需求时自动定位波及页面，按 🔴破坏性 / 🟡连锁 / 🟢局部 分级决策',
+        '质量兜底脚本：validate.mjs 自动检查死链、孤儿页、重复 ID、占位符残留、硬编码样式等',
+        '8 套预设风格库 + 设计 token 机制，换风格只改变量不碰页面结构',
+      ],
+      caseStudy: {
+        title: '实战案例 · 智能通讯录',
+        desc: '从一份需求文档出发，完整跑通六阶段工作流，生成 17 个页面的移动端原型 + PRD 文档，并经历 9 次迭代验证变更管理能力。',
+        bullets: [
+          '17 个页面完整覆盖：联系人 CRUD、智能排重、多方式导入、名片分享',
+          '智能排重算法，高/中/轻三档分级合并',
+          '9 次迭代验证变更管理流程，每次自动影响分析 + 版本快照',
+          '明暗双模式完整支持，简洁高级风格统一',
+        ],
+      },
+      metrics: [
+        { label: '产出形式', value: 'Claude Code Skill' },
+        { label: '阶段数', value: '6 阶段 + 变更管理' },
+        { label: '核心机制', value: '页面 ID 主键 + 同源生成' },
+        { label: '校验项', value: '死链 / 孤儿页 / 占位符 等 10+ 项' },
+      ],
+      tags: ['AI Agent', 'Skill 封装', '产品原型', '变更管理', '设计系统'],
+    },
+  },
+  {
+    id: 2,
     type: '个人项目',
     title: 'Claudio',
     desc: '个人 AI 电台，读懂你的听歌习惯，像 DJ 一样为你播报。',
@@ -27,19 +66,22 @@ const creations = [
     },
   },
   {
-    id: 2,
+    id: 3,
     type: '提效工具',
     title: '库存处理决策计算器',
     desc: '给家人做的库存定价提效工具，用数据判断现在止损还是继续持有。',
     status: '已投入使用',
     detail: {
       category: '效率工具',
+      heroLabel: 'Decision Model',
+      heroTitle: '持有，还是现在卖？',
+      heroLead: '涨价概率 × 涨价幅度 是否大于等待期间仓租成本',
       summary:
         '这是我给老婆做的一个库存处理小工具。她在处理得物、鞋服、潮玩等库存时，经常要判断一件货是现在降价卖掉止损，还是继续压仓等涨价。这个工具把成本、仓租、预期涨价概率和等待时间放到同一个计算模型里，直接给出更清晰的决策参考。',
       highlights: [
         '围绕真实经营场景设计输入项：进货成本、运费、当前售价、入库日期、体积档位、预期涨价价格和涨价把握',
         '内置得物阶梯仓租规则，自动计算当前库龄、已付仓租、等待期仓租和仓租死线',
-        '用“概率期望 + 仓租成本”的方式判断继续持有是否划算，减少凭感觉拍脑袋',
+        '用”概率期望 + 仓租成本”的方式判断继续持有是否划算，减少凭感觉拍脑袋',
         '提供 7 天、15 天、30 天、45 天、60 天、90 天情景对比，方便快速看不同等待周期的盈亏变化',
         '做了手机端三屏滑动布局、计算器式数字键盘、自动缓存和授权码机制，适合日常高频使用',
       ],
@@ -81,7 +123,7 @@ export default function Personal() {
         </div>
 
         {/* Creations Grid */}
-        <div className="grid sm:grid-cols-2 gap-6 max-w-4xl mx-auto">
+        <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
           {creations.map((item, index) => {
             const isClickable = Boolean(item.detail)
 
@@ -173,36 +215,47 @@ export default function Personal() {
               </div>
 
               <div className="grid lg:grid-cols-[1.15fr_0.85fr] gap-8 items-start">
+                {/* 左侧媒体/信息区 */}
                 {activeCreation.detail.video ? (
+                  // 类型1：视频演示（如 Claudio）
                   <div className="rounded-3xl overflow-hidden border border-ink-900/10 bg-ink-50">
                     <video
-                      className="block w-full aspect-video object-cover"
+                      className="block w-full aspect-video object-contain"
                       controls
                       playsInline
                       preload="metadata"
                       poster={activeCreation.detail.poster}
                     >
-                      <source src={activeCreation.detail.video} type="video/mp4" />
+                      <source src={activeCreation.detail.video} type={activeCreation.detail.video.endsWith('.mov') ? 'video/quicktime' : 'video/mp4'} />
                     </video>
                   </div>
-                ) : (
+                ) : activeCreation.detail.hero ? (
+                  // 类型2：自定义 hero 区块（如 skill 项目的架构图）
                   <div className="rounded-3xl border border-ink-900/10 bg-ink-50 p-6 md:p-8">
-                    <div className="mb-6">
-                      <div className="text-xs text-ink-400 uppercase tracking-widest mb-3">
-                        Decision Model
-                      </div>
-                      <div className="heading-display text-3xl md:text-4xl text-ink-900 leading-tight">
-                        持有，还是现在卖？
-                      </div>
-                    </div>
-
-                    <div className="space-y-3">
-                      <div className="rounded-2xl bg-white border border-ink-900/5 p-4">
-                        <div className="text-xs text-ink-400 mb-1">核心判断</div>
-                        <div className="text-sm text-ink-700 leading-relaxed">
-                          涨价概率 × 涨价幅度 是否大于等待期间仓租成本
+                    {activeCreation.detail.hero}
+                  </div>
+                ) : activeCreation.detail.metrics ? (
+                  // 类型3：指标卡片（如库存计算器）
+                  <div className="rounded-3xl border border-ink-900/10 bg-ink-50 p-6 md:p-8">
+                    {activeCreation.detail.heroTitle && (
+                      <div className="mb-6">
+                        <div className="text-xs text-ink-400 uppercase tracking-widest mb-3">
+                          {activeCreation.detail.heroLabel || 'Overview'}
+                        </div>
+                        <div className="heading-display text-3xl md:text-4xl text-ink-900 leading-tight">
+                          {activeCreation.detail.heroTitle}
                         </div>
                       </div>
+                    )}
+                    <div className="space-y-3">
+                      {activeCreation.detail.heroLead && (
+                        <div className="rounded-2xl bg-white border border-ink-900/5 p-4">
+                          <div className="text-xs text-ink-400 mb-1">核心思路</div>
+                          <div className="text-sm text-ink-700 leading-relaxed">
+                            {activeCreation.detail.heroLead}
+                          </div>
+                        </div>
+                      )}
                       <div className="grid grid-cols-2 gap-3">
                         {activeCreation.detail.metrics.map((item) => (
                           <div
@@ -216,7 +269,7 @@ export default function Personal() {
                       </div>
                     </div>
                   </div>
-                )}
+                ) : null}
 
                 <div>
                   <div className="mb-7">
@@ -243,6 +296,34 @@ export default function Personal() {
                       ))}
                     </div>
                   </div>
+
+                  {/* 实战案例（可选） */}
+                  {activeCreation.detail.caseStudy && (
+                    <div className="mb-7">
+                      <div className="flex items-center gap-2 mb-4">
+                        <span className="w-1 h-5 bg-ink-900 rounded-full" />
+                        <h4 className="text-base font-medium text-ink-900">实战案例</h4>
+                      </div>
+                      <div className="pl-3">
+                        <div className="rounded-2xl border border-ink-900/5 bg-ink-50 p-5">
+                          <div className="text-sm font-medium text-ink-900 mb-2">
+                            {activeCreation.detail.caseStudy.title}
+                          </div>
+                          <p className="text-xs text-ink-500 leading-relaxed mb-4">
+                            {activeCreation.detail.caseStudy.desc}
+                          </p>
+                          <div className="space-y-2">
+                            {activeCreation.detail.caseStudy.bullets.map((item, i) => (
+                              <div key={i} className="flex items-start gap-2">
+                                <span className="text-ink-400 mt-0.5 text-xs shrink-0">·</span>
+                                <span className="text-xs text-ink-600 leading-relaxed">{item}</span>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  )}
 
                   <div>
                     <div className="flex items-center gap-2 mb-4">
