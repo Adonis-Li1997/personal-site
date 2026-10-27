@@ -2,13 +2,13 @@ import { useState, useEffect, useRef, useCallback } from 'react'
 import AgentArchitecture from './AgentArchitecture'
 import ChineseTutorArchitecture from './ChineseTutorArchitecture'
 import QuestionBankArchitecture from './QuestionBankArchitecture'
-import LearningPlanArchitecture from './LearningPlanArchitecture'
+import QaAgentArchitecture from './QaAgentArchitecture'
 
 const projects = [
   {
     id: 1,
     category: 'AI × 教育',
-    title: 'AI题库建设：习题加工入库与智能标注',
+    title: 'AI题库建设-AI提效内部流程',
     period: '2025.12 - 2026.07',
     role: 'AI产品经理',
     summary: '面向教育题库建设场景，利用大模型构建AI习题加工入库与智能标注流程，提升题库生产效率与内容质量。',
@@ -28,30 +28,30 @@ const projects = [
   },
   {
     id: 2,
-    category: 'AI × 教育',
-    title: 'AI个性化学习规划',
-    period: '2026.05 - 至今',
+    category: 'AI × 教育硬件',
+    title: 'AI答疑助手-对话问答agent',
+    period: '2026.09 - 至今',
     role: 'AI产品经理',
-    summary: '基于学情数据为学生推荐个性化学习任务，为教师推荐教学任务与干预建议，提升教学效率。',
+    summary: '面向K12扫读笔伴学场景，基于大模型构建学习问答智能体，支持语音/扫描/拍照多模态提问与多轮追问。',
     overview:
-      '该项目面向学生个性化学习与教师精准教学场景，基于学生学情、班级学情、教学进度和教学资源数据，为学生推荐个性化学习任务，为教师推荐班级教学任务与干预建议，提升作业布置、薄弱点巩固、分层教学和资源使用效率。',
+      '该项目面向 K12 学生的扫读笔伴学场景，基于大模型构建学习问答智能体，支持语音提问、文字扫描、拍照传题及多轮追问。围绕学生"提问—理解—讲解—追问"的交互链路，设计具备上下文理解、适龄讲解、问题澄清和连续对话能力的 agent，提升智能硬件的交互自然度与学习问题解决体验。',
     responsibilities: [
-      '主导学习规划能力从 0 到 1 的产品规划，围绕学生端"学什么、怎么练、练到什么程度"和教师端"教什么、布置什么、干预哪些学生"等核心问题，梳理学习任务推荐与教师任务推荐的业务链路。',
-      '负责算法规划侧的需求梳理与规则设计，结合学生知识点掌握情况、错题数据、作业完成情况、班级共性薄弱点等学情数据，设计学习任务生成逻辑、推荐优先级、任务触发条件和结果反馈机制。',
-      '梳理教学资源在学习规划中的使用方式，明确习题、分层课程、知识点讲解内容、巩固练习等资源在预习、同步巩固、培优提升等学习场景中的匹配规则，推动资源从"内容库"转化为可被算法调用的教学任务素材。',
-      '协调教研、算法、研发和业务产品团队，明确学习规划算法的输入数据、输出结果、推荐解释和验收标准，推动算法能力与前端业务页面、教师工作流、学生学习路径完成对接。',
+      '明确业务流程与模型的职责边界：由确定性流程处理输入校验、会话状态、结果校验及屏幕展示与语音播报，由智能体负责题意理解、问题澄清、多模态理解及连续讲解，兼顾交互一致性、响应时延与调用成本。',
+      '设计首轮简答、按需展开、针对性追问解释等交互策略；结合小学、初中、高中不同认知需求，分别设计基础答案理解、解题方法理解和知识迁移导向的讲解深度，并通过提示词约束、结构化输出和答案一致性校验规范回复质量。',
+      '针对扫描公式受限、题干缺失、图片不完整、关键信息缺失、网络异常及学生切换问题等场景设计澄清、重试和新建话题规则；明确知识范围、会话隔离、提示词保护及异常返回机制，降低错误解答和上下文污染风险。',
+      '建立覆盖答案正确性、问题澄清、角色一致性、多轮上下文、讲解结构、输出格式及安全合规的评测维度；规划测试样本、典型 Badcase 和验收标准，为智能体效果验证及后续迭代提供依据。',
     ],
     achievements: [
-      '推动学习规划能力从 0 到 1 落地',
-      '建立教学资源场景化匹配规则，推动内容库可被算法调用',
-      '打通算法能力与前端业务、教师工作流、学生学习路径',
+      '明确确定性流程与模型能力边界，兼顾交互一致性、响应时延与调用成本',
+      '分学段设计三层讲解深度，适配小学/初中/高中不同认知需求',
+      '建立 7 维度评测体系与 Badcase 库，为智能体迭代提供量化依据',
     ],
-    tags: ['学习规划', '推荐系统', '算法规则', '学情分析'],
+    tags: ['对话智能体', '多模态', 'K12教育', '提示词工程', '智能硬件'],
   },
   {
     id: 3,
     category: 'AI × 硬件',
-    title: 'AI对话智能体-消费硬件',
+    title: '对话智能体-情感陪伴类硬件',
     period: '2025.07 - 至今',
     role: 'AI产品经理',
     summary: '基于ASR、TTS、LLM构建AI对话智能体框架，支持快速搭建对话类硬件产品。',
@@ -72,7 +72,7 @@ const projects = [
   {
     id: 4,
     category: 'AI × 出海',
-    title: 'AI中文口语老师',
+    title: 'AI中文口语老师-口语对话训练',
     period: '2025.06 - 2025.09',
     role: 'AI产品经理',
     summary: '面向东南亚市场的中文口语训练应用，多智能体协同实现口语教学与发音纠正。',
@@ -93,7 +93,7 @@ const projects = [
   {
     id: 5,
     category: 'AI × 校园',
-    title: 'AI小智 - 校园智能助手',
+    title: 'AI小智-校园问答助手',
     period: '2024.11 - 2025.05',
     role: 'AI产品经理',
     summary: '基于LLM与多模态交互的校园智能助手，提供数据查询、业务办理、事务答疑等服务。',
@@ -116,7 +116,7 @@ const projects = [
   {
     id: 6,
     category: '智慧校园',
-    title: '智慧校园 - 运营管理平台',
+    title: '运营管理平台-管理后台',
     period: '2022.09 - 2024.12',
     role: '产品经理',
     summary: 'ToB SaaS模式的智慧校园运营管理平台，涵盖多租户、权限、硬件对接、产品订购等。',
@@ -141,7 +141,7 @@ const projects = [
   {
     id: 7,
     category: '硬件产品',
-    title: '宜讯通 - 校园视频话机',
+    title: '宜讯通-校园视频话机',
     period: '2022.01 - 2022.08',
     role: '产品经理',
     summary: '校园视频话机产品，基于微信通话SDK，满足学生与家长的沟通需求。',
@@ -585,7 +585,7 @@ export default function Projects() {
                     {modalProject.id === 1
                       ? <QuestionBankArchitecture />
                       : modalProject.id === 2
-                      ? <LearningPlanArchitecture />
+                      ? <QaAgentArchitecture />
                       : modalProject.id === 3
                       ? <AgentArchitecture />
                       : <ChineseTutorArchitecture />}
